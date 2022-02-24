@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_THOUGHT } from '../utils/queries';
+import { Link } from 'react-router-dom';
 
 import ReactionList from '../components/ReactionList';
 
@@ -22,7 +23,7 @@ const SingleThought = props => {
       <div className="card mb-3">
         <p className="card-header">
           <span style={{ fontWeight: 700 }} className="text-light">
-            {thought.username}
+            <Link to={`/profile/${thought.username}`}>{thought.username}</Link>
           </span>{' '}
           thought on {thought.createdAt}
         </p>
