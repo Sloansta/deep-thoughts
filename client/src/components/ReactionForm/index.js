@@ -18,8 +18,16 @@ const ReactionForm = ({ thoughtId }) => {
 
     const handleFormSubmit = async event => {
         event.preventDefault();
-        setBody('');
-        setCharacterCount(0);
+        try {
+          await addReaction({
+            variables: { reactionBody, thoughtId }
+          });
+
+          setBody('');
+          setCharacterCount(0);
+        } catch (e) {
+          console.error(e);
+        }
     };
 
     return (
